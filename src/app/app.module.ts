@@ -20,8 +20,6 @@ import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 
-import { DishService } from "./service/dish.service";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +42,7 @@ import { DishService } from "./service/dish.service";
     MatCardModule,
     MatButtonModule
   ],
-  providers: [DishService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {} // Typrscript adds classes to javascript code
