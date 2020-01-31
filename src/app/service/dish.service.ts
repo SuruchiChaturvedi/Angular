@@ -14,7 +14,7 @@ export class DishService {
 
   getDish(id: string): Dish {
     return dishes.filter(dish => {
-      dish.id == id;
+      return dish.id == id;
     })[0];
   }
 
