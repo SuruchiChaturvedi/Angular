@@ -40,24 +40,36 @@
   <div fxFlex fxFlexOffset="20px">
     <h3>Send us your feedback</h3>
     <p>{{FeedbackForm.value | json}} {{FeedbackForm.status | json}}</p>
-    <form novalidate [formGroup]="FeedbackForm"  class="form-size" (ngSubmit)="onSubmit()">
+    <form novalidate [formGroup]="FeedbackForm"  #fform="ngForm" class="form-size" (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field class="half-width">
-          <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
+          <input matInput formControlName="firstname" placeholder="First Name" type="text">
+          <mat-error *ngIf="FeedbackForm.get('firstname').hasError('required') && FeedbackForm.get('firstname').touched">
+            FirstName is required
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="half-width">
-          <input matInput formControlName="lastname" placeholder="Last Name" type="text" required>
+          <input matInput formControlName="lastname" placeholder="Last Name" type="text">
+          <mat-error *ngIf="FeedbackForm.get('lastname').hasError('required') && FeedbackForm.get('lastname').touched">
+            LastName is required
+          </mat-error>
         </mat-form-field>
       </p>
 
       <p>
         <mat-form-field class="half-width">
-          <input matInput formControlName="telnum" placeholder="Tel No." type="tel" required>
+          <input matInput formControlName="telnum" placeholder="Tel No." type="tel">
+          <mat-error *ngIf="FeedbackForm.get('telnum').hasError('required') && FeedbackForm.get('telnum').touched">
+           Telnum is required
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="half-width">
-          <input matInput formControlName="email" placeholder="email" type="email" required>
+          <input matInput formControlName="email" placeholder="email" type="email">
+          <mat-error *ngIf="FeedbackForm.get('email').hasError('required') && FeedbackForm.get('email').touched">
+            Email is required
+          </mat-error>
         </mat-form-field>
       </p>
 
@@ -79,7 +91,7 @@
         </mat-form-field>
       </p>
 
-      <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
+      <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="FeedbackForm.invalid">Submit</button>
 
     </form>
   </div>
