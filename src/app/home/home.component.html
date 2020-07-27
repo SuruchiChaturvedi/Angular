@@ -1,0 +1,45 @@
+<div class="container" 
+  fxLayout="row"
+  fxLayout.xs="column" 
+  fxLayout.sm="column"
+  fxLayoutGap="10px" 
+  fxLayoutAlign="space-around center"
+  >
+  <div> 
+    <mat-card *ngIf="featuredDish">
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title><h3>{{featuredDish.name | uppercase}}</h3></mat-card-title>
+      </mat-card-header>
+      <img mat-card-image alt="featuredDish" src="{{featuredDish.image}}">
+      <mat-card-content>{{featuredDish.description}}</mat-card-content>      
+    </mat-card>
+  </div>
+
+  <div>
+    <mat-card *ngIf="featuredPromotion">
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title><h3>{{featuredPromotion.name | uppercase}}</h3></mat-card-title>
+      </mat-card-header>
+      <img mat-card-image alt="featuredDish" src="{{featuredPromotion.image}}">
+      <mat-card-content>{{featuredPromotion.description}}</mat-card-content>
+    </mat-card>
+  </div>
+
+  <div>
+    <mat-card *ngIf="featuredLeader">
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title><h3>{{featuredLeader.name | uppercase}}</h3></mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{featuredLeader.image}}" alt="{{featuredLeader.name}}">
+
+      <mat-card-content>
+        <p>{{featuredLeader.designation}}</p>
+        <p>{{featuredLeader.description}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
