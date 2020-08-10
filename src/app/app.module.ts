@@ -7,12 +7,15 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import {AppRoutingModule} from "./app-routing/app-routing.module";
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {MatCheckboxModule} from "@angular/material/checkbox";
-import {FormsModule} from "@angular/forms";
+import { AppRoutingModule } from "./app-routing/app-routing.module";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatSelectModule } from "@angular/material/select";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { MenuComponent } from "./menu/menu.component";
@@ -26,8 +29,8 @@ import { ContactComponent } from './contact/contact.component';
 import "hammerjs";
 
 import { DishService } from "./service/dish.service";
-import {PromotionService} from "./service/promotion.service";
-import {LeaderService} from "./service/leader.service";
+import { PromotionService } from "./service/promotion.service";
+import { LeaderService } from "./service/leader.service";
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
@@ -37,6 +40,7 @@ import { LoginComponent } from './login/login.component';
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MatListModule,
     MatGridListModule,
@@ -46,7 +50,9 @@ import { LoginComponent } from './login/login.component';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSelectModule,
+    MatSlideToggleModule
   ],
   providers: [DishService,PromotionService,LeaderService],
   entryComponents:[LoginComponent],
