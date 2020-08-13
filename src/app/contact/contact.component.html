@@ -38,26 +38,30 @@
 
   <div fxFlex fxFlexOffset="20px" class="form-size">
     <h3>Send us your Feedback</h3>
-    <form novalidate [formGroup]="FeedBackForm" (ngSubmit)="onSubmit()">
+    <form novalidate [formGroup]="FeedBackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
 
-      <p>{{FeedBackForm.value | json}} {{FeedBackForm.status | json}}</p>
+      <p>{{FeedBackForm.value | json}} {{FeedBackForm.status | json}} {{FeedBackForm.get('firstName').pristine | json}} {{FeedBackForm.get('firstName').untouched | json}}</p>
       <p>
         <mat-form-field class="half-width">
           <input matInput type="text" placeholder="First Name" formControlName="firstName" required>
+          <mat-error *ngIf="FeedBackForm.get('firstName').hasError('required') && FeedBackForm.get('firstName').touched">First name is required</mat-error>
         </mat-form-field>
 
         <mat-form-field class="half-width">
           <input matInput type="text" placeholder="Last Name" formControlName="lastName" required>
+          <mat-error *ngIf="FeedBackForm.get('lastName').hasError('required') && FeedBackForm.get('lastName').touched">Last name is required</mat-error>
         </mat-form-field>
       </p>
       
       <p>
         <mat-form-field class="half-width">
           <input matInput type="tel" placeholder="Tel No." formControlName="telnum" required>
+          <mat-error *ngIf="FeedBackForm.get('telnum').hasError('required') && FeedBackForm.get('telnum').touched">Telnum is required</mat-error>
         </mat-form-field>
 
         <mat-form-field class="half-width">
           <input matInput type="email" placeholder="Email" formControlName="email" required>
+          <mat-error *ngIf="FeedBackForm.get('email').hasError('required') && FeedBackForm.get('email').touched">Email is required</mat-error>
         </mat-form-field>
       </p>
       
@@ -79,7 +83,7 @@
       </mat-form-field>
     </p>
 
-    <button mat-button class="background-primary text-floral-white">Submit</button>
+    <button mat-button class="background-primary text-floral-white" [disabled]="FeedBackForm.invalid">Submit</button>
     </form>
   </div>
 </div>
