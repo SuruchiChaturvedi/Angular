@@ -8,15 +8,15 @@ import { dishes } from "../shared/dishes";
 export class DishService {
   constructor() {}
 
-  getDishes(): Dish[] {
-    return dishes;
+  getDishes(): Promise<Dish[]> {
+    return Promise.resolve(dishes);
   }
 
-  getDish(id:string): Dish{
-    return dishes.filter(dish=>dish.id===id)[0];
+  getDish(id:string): Promise<Dish>{
+    return Promise.resolve(dishes.filter(dish=>dish.id===id)[0]);
   }
 
-  getFeaturedDish():Dish{
-    return dishes.filter(dish=>dish.featured)[0];
+  getFeaturedDish():Promise<Dish>{
+    return Promise.resolve(dishes.filter(dish=>dish.featured)[0]);
   }
 }
