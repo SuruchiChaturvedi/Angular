@@ -24,4 +24,8 @@ export class DishService {
   //Simulate Server latency with 2 seconds delay
   return of(dishes.filter(dish=>dish.featured)[0]).pipe(delay(2000));  
   }
+
+  getDishIds():Observable <String[] | any>{
+    return of (dishes.map(dish=>dish.id));
+  }
 }

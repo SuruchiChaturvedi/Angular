@@ -38,6 +38,7 @@ import { LoginComponent } from './login/login.component';
   declarations: [AppComponent, MenuComponent, DishdetailComponent, HeaderComponent, FooterComponent, HomeComponent, AboutComponent, ContactComponent, LoginComponent],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
