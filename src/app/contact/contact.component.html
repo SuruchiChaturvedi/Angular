@@ -44,24 +44,24 @@
       <p>
         <mat-form-field class="half-width">
           <input matInput type="text" placeholder="First Name" formControlName="firstName" required>
-          <mat-error *ngIf="FeedBackForm.get('firstName').hasError('required') && FeedBackForm.get('firstName').touched">First name is required</mat-error>
+          <mat-error *ngIf="formErrors.firstName">{{formErrors.firstName}}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="half-width">
           <input matInput type="text" placeholder="Last Name" formControlName="lastName" required>
-          <mat-error *ngIf="FeedBackForm.get('lastName').hasError('required') && FeedBackForm.get('lastName').touched">Last name is required</mat-error>
+          <mat-error *ngIf="formErrors.lastName">{{formErrors.lastName}}</mat-error>
         </mat-form-field>
       </p>
-      
+      <!--pattern is any combination of numbers from 0-9-->
       <p>
         <mat-form-field class="half-width">
-          <input matInput type="tel" placeholder="Tel No." formControlName="telnum" required>
-          <mat-error *ngIf="FeedBackForm.get('telnum').hasError('required') && FeedBackForm.get('telnum').touched">Telnum is required</mat-error>
+          <input matInput type="tel" placeholder="Tel No." formControlName="telnum" pattern="[0-9]*" required>
+          <mat-error *ngIf="formErrors.telnum">{{formErrors.telnum}}</mat-error>
         </mat-form-field>
-
+        <!--email attribute is require here for email validator-->
         <mat-form-field class="half-width">
-          <input matInput type="email" placeholder="Email" formControlName="email" required>
-          <mat-error *ngIf="FeedBackForm.get('email').hasError('required') && FeedBackForm.get('email').touched">Email is required</mat-error>
+          <input matInput type="email" placeholder="Email" formControlName="email" email required>
+          <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
         </mat-form-field>
       </p>
       

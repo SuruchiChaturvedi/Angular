@@ -12,8 +12,10 @@ export class ContactComponent implements OnInit {
   FeedBackForm:FormGroup;
   FeedBack:feedback;
   contactType=ContactType;
+  //We look for the selector matching 'fform' in DOM, since it is a child in template so we access by @ViewChild
   @ViewChild ('fform') feedBackFormDirective;
 
+  //This object will contain error messages
   formErrors={
     'firstName':'',
     'lastName':'',
@@ -24,14 +26,14 @@ export class ContactComponent implements OnInit {
   ValidationMessages={
     'firstName':{
       'required':'First Name is required.',
-      'minLength':'First Name must be atleast 2 characters',
-      'maxLength': 'First Name cannot be more than 25 characters'
+      'minlength':'First Name must be atleast 2 characters',
+      'maxlength': 'First Name cannot be more than 25 characters'
     },
 
     'lastName':{
       'required':'Last Name is required.',
-      'minLength':'Last Name must be atleast 2 characters',
-      'maxLength': 'Last Name cannot be more than 25 characters'
+      'minlength':'Last Name must be atleast 2 characters',
+      'maxlength': 'Last Name cannot be more than 25 characters'
     },
 
     'telnum':{
@@ -54,8 +56,9 @@ export class ContactComponent implements OnInit {
   }
 
   createForm(){
-    
+    // Validators.required, validators.email, ...... are default validators
     this.FeedBackForm=this.fb.group({
+      //Validators enclosed in an array since are more than one.
       firstName:['',[Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       lastName:['',[Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       telnum:[0,[Validators.required, Validators.pattern]],
@@ -65,11 +68,41 @@ export class ContactComponent implements OnInit {
       message:''
   });
 
+  //valueChanges observable provided by angular to see if any form element's value changes.
   this.FeedBackForm.valueChanges.subscribe(data=>this.onValueChanged(data));
 
   //(re)sets form validation messages
-  onValueChanged();
+  this.onValueChanged();
 
+}
+
+onValueChanged(data?:any){
+  console.log("Came to on value changed function");
+  if(!this.FeedBackForm){return;}
+  else{
+    const form = this.FeedBackForm;
+
+    for (const field in this.formErrors){
+      //since the object will have some inherited functions
+      if(this.formErrors.hasOwnProperty(field)){
+        //We clear the field if it has any value prior
+        this.formErrors[field]='';
+        const control=form.get(field);
+        //We can see all the control values possible here
+        //console.log(control);
+        if(control && control.dirty && !control.valid){          
+          const messages=this.ValidationMessages[field];
+          //control.errors contains the error object
+          for(const key in control.errors){
+            if(control.errors.hasOwnProperty(key)){
+              this.formErrors[field]+=messages[key]+" ";
+            }
+            
+          } 
+        }
+      }
+    }
+  }
 }
 
 onSubmit(){
