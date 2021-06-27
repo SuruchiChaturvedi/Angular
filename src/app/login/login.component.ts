@@ -14,11 +14,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
   onSubmit(){
     
     console.log("Users, ",this.user);
     this.dialogRef.close();
   }
+
+  
 
 }

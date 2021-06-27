@@ -33,9 +33,15 @@ import { DishService } from "./service/dish.service";
 import { PromotionService } from "./service/promotion.service";
 import { LeaderService } from "./service/leader.service";
 import { LoginComponent } from './login/login.component';
+import { AbcComponent } from './abc/abc.component';
+import { HighlightDirective } from './highlight.directive';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, DishdetailComponent, HeaderComponent, FooterComponent, HomeComponent, AboutComponent, ContactComponent, LoginComponent],
+  declarations: [AppComponent, MenuComponent, DishdetailComponent, HeaderComponent, FooterComponent, HomeComponent, AboutComponent, ContactComponent, LoginComponent, AbcComponent, HighlightDirective, EmployeeComponent, EmployeeListComponent, ParentComponent, ChildComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
